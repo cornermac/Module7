@@ -10,28 +10,6 @@ var Truck = require('../models/truckModel');
 
 var router = express.Router();
 
-//app.use(bodyParser.urlencoded({extended: true}));
-//app.use(bodyParser.json());
-
-//app.use(serveStatic);
-
-//var truckObject = trucks();
-
-//var db = mongoose.connect('mongodb://localhost/foodTruckAPI');
-
-
-/*
-// we can now retrieve data from our database
-app.get('/trucks', function (request, response) {
-  Truck.find(function (error, trucks) {
-    if (error) {   
-        response.status(500).send(error);
-    } else {
-        response.json(trucks);
-    }
-});
-
-*/
 
 router.route('/') //added to enable Routeing
 	.get(function (request, response){
@@ -41,7 +19,7 @@ router.route('/') //added to enable Routeing
 		  }else{
 			  response.status(201).send(trucks);
 		  }
-		})
+		});
 	})
 	.post(function(request,response){
 		var newTruck = new Truck(request.body);
@@ -51,10 +29,10 @@ router.route('/') //added to enable Routeing
 		  }else{
 			  response.status(201).send(truck);
 		  }
-		})
+		});
 	});
 
-	
+
 router.route('/:id')
 	.get(function(request,response){
 	  var foodTruckId = request.params.id;
@@ -64,7 +42,7 @@ router.route('/:id')
 		  }else{
 			  response.status(201).send(truck);
 		  }
-	  })  
+	  });
 	})
 	.delete(function(request,response){
 		var id = request.params.id; //get the truck id
@@ -78,9 +56,9 @@ router.route('/:id')
 					}else{
 					  response.sendStatus(200);
 					}
-				})
+				});
 			}
-		})
+		});
 	});
 
 
